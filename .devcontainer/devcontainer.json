@@ -1,5 +1,5 @@
 {
-  "name": "Codespaces - kind with Docker",
+  "name": "Dev Container - .NET, Node.js, Kind",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -7,8 +7,11 @@
     "--privileged"
   ],
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
   },
-  "postCreateCommand": "bash .devcontainer/scripts/start-docker-and-kind.sh",
+  "postCreateCommand": "bash .devcontainer/scripts/setup-cluster.sh",
   "remoteUser": "vscode"
 }
