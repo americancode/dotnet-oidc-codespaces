@@ -1,0 +1,14 @@
+{
+  "name": "Codespaces - kind with Docker",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--privileged"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "bash .devcontainer/scripts/start-docker-and-kind.sh",
+  "remoteUser": "vscode"
+}
