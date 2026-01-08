@@ -1,0 +1,6 @@
+apiVersion: v2
+name: weather-app
+description: A .NET + Angular weather forecast application
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,6 @@
+@dotnet_oidc_codespaces_HostAddress = http://localhost:5281
+
+GET {{dotnet_oidc_codespaces_HostAddress}}/api/weatherforecast/
+Accept: application/json
+
+###

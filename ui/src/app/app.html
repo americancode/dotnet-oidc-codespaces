@@ -1,0 +1,37 @@
+<main>
+  <h1>{{ title() }}</h1>
+
+  @if (loading()) {
+    <p>Loading weather data...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+    <button (click)="loadWeatherData()">Retry</button>
+  }
+
+  @if (!loading() && !error() && forecasts().length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Temp (C)</th>
+          <th>Temp (F)</th>
+          <th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (forecast of forecasts(); track forecast.date) {
+          <tr>
+            <td>{{ forecast.date }}</td>
+            <td>{{ forecast.temperatureC }}</td>
+            <td>{{ forecast.temperatureF }}</td>
+            <td>{{ forecast.summary }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</main>
+
+<router-outlet />
