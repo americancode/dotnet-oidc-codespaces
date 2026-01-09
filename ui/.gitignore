@@ -30,6 +30,7 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+.yarn/*
 .sass-cache/
 /connect.lock
 /coverage
@@ -37,6 +38,9 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+
+# Yarn PnP (not used with node-modules, but ignore if created)
+.pnp.*
 
 # System files
 .DS_Store

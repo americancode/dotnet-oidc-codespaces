@@ -2,6 +2,7 @@
 set -euo pipefail
 
 CLUSTER_NAME="devcontainer"
+HELM_TIMEOUT="${HELM_TIMEOUT:-10m}"
 
 echo "=== Waiting for Docker daemon ==="
 max_wait=120
@@ -53,7 +54,8 @@ helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --set crds.enabled=true \
-  --wait
+  --wait \
+  --timeout "${HELM_TIMEOUT}"
 
 echo "=== Installing Traefik (Ingress + Gateway API) ==="
 helm upgrade --install traefik traefik/traefik \
@@ -64,7 +66,8 @@ helm upgrade --install traefik traefik/traefik \
   --set gateway.enabled=false \
   --set ports.web.hostPort=80 \
   --set ports.websecure.hostPort=443 \
-  --wait
+  --wait \
+  --timeout "${HELM_TIMEOUT}"
 
 echo "=== Creating Gateway resource ==="
 kubectl apply -f - <<EOF
